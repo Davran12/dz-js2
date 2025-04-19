@@ -1,22 +1,15 @@
-const students = [
-  {name: "Иван", age: 21, scores: [90, 85, 88]},
-  {name: "Мария", age: 23, scores: [78, 82, 80]},
-  {name: "Пётр", age: 20, scores: [92, 88, 95]},
-]
+function filterNumbers(arr) {
+  let result = [...arr]
 
-for (let i = 0; i < students.length; i++) {
-  const student = students[i]
-  const scores = student.scores
-
-  let total = 0
-  for (let j = 0; j < scores.length; j++) {
-    total += scores[j]
+  for (let i = 0; i < result.length; i++) {
+    for (let b = 0; b < result.length - 1; b++) {
+      if (result[b] > result[b + 1]) {
+        ;[result[b], result[b + 1]] = [result[b + 1], result[b]]
+      }
+    }
   }
 
-  const dav1 = total / scores.length
-  console.log(dav1)
-
-  if (dav1 > 85) {
-      console.log(`${student.name}: ${dav1}`)
-  }
+  return result
 }
+
+console.log(filterNumbers([2, 6, 3, 1, 6, 2, 3]))
