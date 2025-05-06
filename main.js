@@ -1,38 +1,32 @@
-const candidates = [
-  { name: "Алексей Петров", age: 35, health: "отличное", experience: 7, education: ["МГУ", "МАИ"] },
-  { name: "Елена Смирнова", age: 28, health: "хорошее", experience: 4, education: ["СПбГУ"] },
-  { name: "Иван Козлов", age: 41, health: "удовлетворительное", experience: 15, education: ["МФТИ", "МГТУ"] },
-  { name: "Ольга Васнецова", age: 30, health: "отличное", experience: 5, education: ["МГУ"] },
-  { name: "Дмитрий Орлов", age: 45, health: "плохое", experience: 20, education: ["МАИ", "МГУ", "Калтех"] },
-  { name: "Анна Жукова", age: 33, health: "хорошее", experience: 8, education: ["Бауманка"] }
-];
+const purchases = [
+  {name: "Книга", price: 500, quantity: 2},
+  {name: "Ручка", price: 30, quantity: 5},
+  {name: "Наушники", price: 1500, quantity: 1},
+]
 
-const prestigiousUniversities = ["МГУ", "МФТИ", "Бауманка"];
+let total = 0
 
-const filteredCandidates = candidates.filter(candidate => {
-  let hasPrestigiousEducation = false;
+purchases.forEach((item) => {
+  const itemTotal = item.price * item.quantity
+  console.log(`${item.name}: ${item.quantity} × ${item.price} = ${itemTotal}`)
+  total += itemTotal
+})
 
-  for (let i = 0; i < candidate.education.length; i++) {
-    for (let j = 0; j < prestigiousUniversities.length; j++) {
-      if (candidate.education[i] === prestigiousUniversities[j]) {
-        hasPrestigiousEducation = true;
-        break;
-      }
+console.log(`Итоговая сумма: ${total}`)
+
+const numbers = [10, 15, 7, 20, 33, 2]
+
+const result = numbers.reduce(
+  (acc, num) => {
+    if (num % 2 === 0) {
+      acc.evenSum += num
+    } else {
+      acc.oddSum += num
     }
-    if (hasPrestigiousEducation) break;
-  }
+    return acc
+  },
+  {evenSum: 0, oddSum: 0}
+)
 
-  return (
-    candidate.age >= 25 &&
-    candidate.age <= 40 &&
-    (candidate.health === "отличное" || candidate.health === "хорошее") &&
-    candidate.experience >= 5 &&
-    hasPrestigiousEducation
-  );
-});
-
-const result = filteredCandidates.map(candidate => {
-  return `${candidate.name} (${candidate.experience} лет опыта)`;
-});
-
-console.log(result);
+console.log(`Сумма чётных: ${result.evenSum}`)
+console.log(`Сумма нечётных: ${result.oddSum}`)
