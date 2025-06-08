@@ -34,7 +34,7 @@ console.log(secondTask([1, 2, 3, 4, 5])) // => 5
 
 function thirdTask(number) {
   let count = 0
-  number = Math.abs(number) 
+  number = Math.abs(number)
   while (number >= 1) {
     count++
     number = Math.floor(number / 10)
@@ -82,7 +82,7 @@ console.log(
     city: "Berlin",
     isAdmin: false,
   })
-) 
+)
 
 // 6. for...in – Поиск свойства с определенным значением
 // Условие:
@@ -110,7 +110,7 @@ console.log(
 // Дана строка. Посчитать количество гласных букв (a, e, i, o, u).
 
 function seventhTask(word) {
-  let vowels = "aeiouAEIOU"
+  let vowels = "aeiou"
   let count = 0
   for (let char of word) {
     if (vowels.includes(char)) {
